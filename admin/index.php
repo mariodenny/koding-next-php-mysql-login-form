@@ -8,6 +8,9 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+    ?>
     <h1>Admin Page</h1>
     <p>Hello, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
     </p>

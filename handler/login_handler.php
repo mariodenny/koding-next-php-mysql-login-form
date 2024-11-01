@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query = "SELECT * FROM users WHERE email='$email'";
     $result = mysqli_query($db, $query);
 
-    if (mysqli_num_rows($result) == 1) {
+    if (mysqli_num_rows($result) > 0) {
         $user = mysqli_fetch_assoc($result);
 
         if (password_verify($password, $user['password'])) {
@@ -21,9 +21,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../index.php");
             exit();
         }
-    } else {
-        $_SESSION['error'] = 'Email tidak terdaftar.';
-        header("Location: ../index.php");
-        exit();
     }
 }
